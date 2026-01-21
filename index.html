@@ -85,23 +85,27 @@
         .contact-link:hover {
             color: #0078d4;
         }
-        @media (max-width: 900px), (pointer: coarse) {
-            .logo-large {
-                display: none !important;
-            }
-            .logo-small {
-                display: block !important;
-                width: auto !important;
-                height: auto !important;
-                object-fit: contain !important;
-            }
-            .container {
-                min-height: 70vh;
-            }
-            .contact-link {
-                font-size: 2rem;
-            }
-            .desktop-link {
+                @media (max-width: 900px), (pointer: coarse) {
+                    .logo-large {
+                        display: none !important;
+                    }
+                    .logo-small {
+                        display: block !important;
+                        width: auto !important;
+                        height: auto !important;
+                        object-fit: contain !important;
+                    }
+                    .container {
+                        min-height: 100vh;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    .contact-link {
+                        font-size: 2rem;
+                    }
+                }
                 display: block !important;
                 font-size: 1.2rem;
                 margin-bottom: 2rem;
