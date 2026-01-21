@@ -5,16 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Belter Automation LLC</title>
     <style>
-                        /* Force desktop layout when .force-desktop is on body */
-                        body.force-desktop .logo-large {
-                            display: block !important;
-                        }
-                        body.force-desktop .logo-small {
-                            display: none !important;
-                        }
-                        body.force-desktop .desktop-link {
-                            display: none !important;
-                        }
                 /* Browser-specific rules */
                 /* iOS Safari */
                 @supports (-webkit-touch-callout: none) {
@@ -140,33 +130,7 @@
         <img src="Belter large.png" alt="Belter Large" class="logo-large">
         <img src="Belter logo.png" alt="Belter Logo" class="logo-small">
         <a href="mailto:steve@belterautomation.com" class="contact-link">Contact Us</a>
-        <a href="#" class="desktop-link" style="display:none;">Desktop Version</a>
     </div>
-    <script>
-    // Show Desktop Version link for mobile browsers
-    function isMobile() {
-        return window.innerWidth <= 900 || navigator.maxTouchPoints > 0 || /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
-    }
-    function showDesktopLink() {
-        var desktopLink = document.querySelector('.desktop-link');
-        // Hide if already in desktop view or forced desktop
-        if (!isMobile() || document.body.classList.contains('force-desktop')) {
-            desktopLink.style.display = 'none';
-        } else {
-            desktopLink.style.display = 'block';
-        }
-    }
-    document.addEventListener('DOMContentLoaded', showDesktopLink);
-    window.addEventListener('resize', showDesktopLink);
-    document.addEventListener('force-desktop', showDesktopLink);
-
-    // Desktop Version link handler
-    document.querySelector('.desktop-link').addEventListener('click', function(e) {
-        e.preventDefault();
-        document.body.classList.add('force-desktop');
-        showDesktopLink();
-    });
-    </script>
     </script>
     </div>
 </body>
