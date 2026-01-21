@@ -149,19 +149,22 @@
     }
     function showDesktopLink() {
         var desktopLink = document.querySelector('.desktop-link');
-        if (isMobile()) {
-            desktopLink.style.display = 'block';
-        } else {
+        // Hide if already in desktop view or forced desktop
+        if (!isMobile() || document.body.classList.contains('force-desktop')) {
             desktopLink.style.display = 'none';
+        } else {
+            desktopLink.style.display = 'block';
         }
     }
     document.addEventListener('DOMContentLoaded', showDesktopLink);
     window.addEventListener('resize', showDesktopLink);
+    document.addEventListener('force-desktop', showDesktopLink);
 
     // Desktop Version link handler
     document.querySelector('.desktop-link').addEventListener('click', function(e) {
         e.preventDefault();
         document.body.classList.add('force-desktop');
+        showDesktopLink();
     });
     </script>
     </script>
