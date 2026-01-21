@@ -13,44 +13,46 @@
             font-family: 'Segoe UI', Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
         }
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             width: 100vw;
             min-height: 80vh;
             box-sizing: border-box;
             text-align: center;
+            position: relative;
         }
         .logo-large {
             display: block;
-            width: 90vw;
-            max-width: 900px;
-            max-height: 50vh;
+            width: 100vw;
+            max-width: 1200px;
+            max-height: calc(100vh - 7rem);
             height: auto;
             margin: 0 auto 2rem auto;
             box-sizing: border-box;
         }
         .logo-small {
             display: none;
-            width: 80vw;
-            max-width: 400px;
+            width: 90vw;
+            max-width: 500px;
             height: auto;
             margin: 0 auto 2rem auto;
         }
         .contact-link {
             font-size: 2.5rem;
             color: #222;
-            margin-top: auto;
+            margin-top: 2rem;
             margin-bottom: 2rem;
             letter-spacing: 2px;
             text-decoration: none;
             transition: color 0.2s;
             word-break: break-word;
+            z-index: 2;
         }
         .contact-link:hover {
             color: #0078d4;
