@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belter Automation LLC</title>
+    <!-- Set base for GitHub Pages (uncomment and set if deploying to a subfolder) -->
+    <!-- <base href="/REPO-NAME/"> -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        .logo-large {
+            display: block;
+            max-width: 80vw;
+            height: auto;
+        }
+        .logo-small {
+            display: none;
+            max-width: 60vw;
+            height: auto;
+        }
+        .contact-link {
+            font-size: 2.5rem;
+            color: #222;
+            margin-top: 2rem;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .contact-link:hover {
+            color: #0078d4;
+        }
+        @media (max-width: 900px) {
+            .logo-large {
+                display: none;
+            }
+            .logo-small {
+                display: block;
+            }
+            .contact-link {
+                font-size: 2rem;
+            }
+        }
+        @media (max-width: 600px) {
+            .contact-link {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="./Belter%20Large.png" alt="Belter Large" class="logo-large">
+        <img src="./Belter%20logo.png" alt="Belter Logo" class="logo-small">
+        <a href="mailto:steve@belterautomation.com" class="contact-link">Contact Us</a>
+    </div>
+</body>
+</html>
