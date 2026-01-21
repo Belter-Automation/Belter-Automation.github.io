@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Belter Automation LLC</title>
     <style>
+                        /* Force desktop layout when .force-desktop is on body */
+                        body.force-desktop .logo-large {
+                            display: block !important;
+                        }
+                        body.force-desktop .logo-small {
+                            display: none !important;
+                        }
+                        body.force-desktop .desktop-link {
+                            display: none !important;
+                        }
                 /* Browser-specific rules */
                 /* iOS Safari */
                 @supports (-webkit-touch-callout: none) {
@@ -152,9 +162,6 @@
     document.querySelector('.desktop-link').addEventListener('click', function(e) {
         e.preventDefault();
         document.body.classList.add('force-desktop');
-        document.querySelector('.logo-large').style.display = 'block';
-        document.querySelector('.logo-small').style.display = 'none';
-        this.style.display = 'none';
     });
     </script>
     </script>
