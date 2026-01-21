@@ -90,5 +90,29 @@
         <img src="Belter logo.png" alt="Belter Logo" class="logo-small">
         <a href="mailto:steve@belterautomation.com" class="contact-link">Contact Us</a>
     </div>
+    <script>
+    function scaleLogo() {
+        const container = document.querySelector('.container');
+        const logoLarge = document.querySelector('.logo-large');
+        const contactLink = document.querySelector('.contact-link');
+        if (!logoLarge || !contactLink) return;
+
+        // Get container height and Contact Us height
+        const containerRect = container.getBoundingClientRect();
+        const contactRect = contactLink.getBoundingClientRect();
+
+        // Calculate available height above Contact Us
+        const availableHeight = contactRect.top - containerRect.top - 32; // 32px for margin
+
+        // Set max-height for logo
+        logoLarge.style.maxHeight = availableHeight + 'px';
+        logoLarge.style.width = '100%';
+        logoLarge.style.height = 'auto';
+    }
+
+    window.addEventListener('resize', scaleLogo);
+    window.addEventListener('DOMContentLoaded', scaleLogo);
+    </script>
+    </div>
 </body>
 </html>
