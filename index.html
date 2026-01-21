@@ -5,6 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Belter Automation LLC</title>
     <style>
+                /* Browser-specific rules */
+                /* iOS Safari */
+                @supports (-webkit-touch-callout: none) {
+                    .container {
+                        padding-bottom: env(safe-area-inset-bottom, 0px);
+                    }
+                }
+                /* Chrome (Webkit) */
+                @media screen and (-webkit-min-device-pixel-ratio:0) {
+                    .logo-large, .logo-small {
+                        image-rendering: -webkit-optimize-contrast;
+                    }
+                }
+                /* Firefox */
+                @-moz-document url-prefix() {
+                    .logo-large, .logo-small {
+                        image-rendering: crisp-edges;
+                    }
+                }
+                /* Edge (Chromium) */
+                @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+                    .logo-large, .logo-small {
+                        image-rendering: auto;
+                    }
+                }
         body {
             margin: 0;
             padding: 0;
@@ -60,7 +85,7 @@
         .contact-link:hover {
             color: #0078d4;
         }
-        @media (max-width: 900px) {
+        @media (max-width: 900px), (pointer: coarse) {
             .logo-large {
                 display: none !important;
             }
@@ -75,6 +100,14 @@
             }
             .contact-link {
                 font-size: 2rem;
+            }
+            .desktop-link {
+                display: block !important;
+                font-size: 1.2rem;
+                margin-bottom: 2rem;
+                color: #0078d4;
+                text-decoration: underline;
+                cursor: pointer;
             }
         }
         @media (max-width: 600px) {
@@ -97,7 +130,33 @@
         <img src="Belter large.png" alt="Belter Large" class="logo-large">
         <img src="Belter logo.png" alt="Belter Logo" class="logo-small">
         <a href="mailto:steve@belterautomation.com" class="contact-link">Contact Us</a>
+        <a href="#" class="desktop-link" style="display:none;">Desktop Version</a>
     </div>
+    <script>
+    // Show Desktop Version link for mobile browsers
+    function isMobile() {
+        return window.innerWidth <= 900 || navigator.maxTouchPoints > 0 || /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+    }
+    function showDesktopLink() {
+        var desktopLink = document.querySelector('.desktop-link');
+        if (isMobile()) {
+            desktopLink.style.display = 'block';
+        } else {
+            desktopLink.style.display = 'none';
+        }
+    }
+    document.addEventListener('DOMContentLoaded', showDesktopLink);
+    window.addEventListener('resize', showDesktopLink);
+
+    // Desktop Version link handler
+    document.querySelector('.desktop-link').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.body.classList.add('force-desktop');
+        document.querySelector('.logo-large').style.display = 'block';
+        document.querySelector('.logo-small').style.display = 'none';
+        this.style.display = 'none';
+    });
+    </script>
     </script>
     </div>
 </body>
