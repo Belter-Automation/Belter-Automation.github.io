@@ -38,8 +38,8 @@
         }
         .logo-small {
             display: none;
-            width: 90vw;
-            max-width: 500px;
+            width: auto;
+            max-width: none;
             height: auto;
             margin: 0 auto 2rem auto;
         }
@@ -63,6 +63,9 @@
             }
             .logo-small {
                 display: block !important;
+                width: auto !important;
+                max-width: none !important;
+                height: auto !important;
             }
             .container {
                 min-height: 70vh;
@@ -79,7 +82,9 @@
                 font-size: 1.2rem;
             }
             .logo-small {
-                max-width: 95vw;
+                width: auto !important;
+                max-width: none !important;
+                height: auto !important;
             }
         }
     </style>
