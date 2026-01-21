@@ -18,16 +18,23 @@
         }
         .container {
             text-align: center;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            box-sizing: border-box;
         }
         .logo-large {
             display: block;
-            max-width: 80vw;
+            max-width: 100%;
             height: auto;
+            margin: 0 auto 1.5rem auto;
         }
         .logo-small {
             display: none;
-            max-width: 60vw;
+            max-width: 80vw;
             height: auto;
+            margin: 0 auto 1.5rem auto;
         }
         .contact-link {
             font-size: 2.5rem;
@@ -36,6 +43,7 @@
             letter-spacing: 2px;
             text-decoration: none;
             transition: color 0.2s;
+            word-break: break-word;
         }
         .contact-link:hover {
             color: #0078d4;
@@ -47,13 +55,24 @@
             .logo-small {
                 display: block;
             }
+            .container {
+                max-width: 90vw;
+                padding: 1.5rem 0.5rem;
+            }
             .contact-link {
                 font-size: 2rem;
             }
         }
         @media (max-width: 600px) {
+            .container {
+                max-width: 98vw;
+                padding: 1rem 0.2rem;
+            }
             .contact-link {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
+            }
+            .logo-small {
+                max-width: 95vw;
             }
         }
     </style>
