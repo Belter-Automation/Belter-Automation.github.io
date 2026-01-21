@@ -92,20 +92,25 @@
     </div>
     <script>
     function scaleLogo() {
-        const container = document.querySelector('.container');
         const logoLarge = document.querySelector('.logo-large');
         const contactLink = document.querySelector('.contact-link');
         if (!logoLarge || !contactLink) return;
 
-        // Get container height and Contact Us height
-        const containerRect = container.getBoundingClientRect();
+        // Only run on desktop (large logo visible)
+        if (window.innerWidth <= 900) {
+            logoLarge.style.maxHeight = '';
+            logoLarge.style.width = '';
+            logoLarge.style.height = '';
+            return;
+        }
+
+        // Get viewport height and Contact Us position
         const contactRect = contactLink.getBoundingClientRect();
+        const availableHeight = contactRect.top - 48; // 48px for margin
 
-        // Calculate available height above Contact Us
-        const availableHeight = contactRect.top - containerRect.top - 32; // 32px for margin
-
-        // Set max-height for logo
-        logoLarge.style.maxHeight = availableHeight + 'px';
+        // Use 90% of available space, but not less than 300px and not more than 900px
+        const logoHeight = Math.max(300, Math.min(availableHeight * 0.9, 900));
+        logoLarge.style.maxHeight = logoHeight + 'px';
         logoLarge.style.width = '100%';
         logoLarge.style.height = 'auto';
     }
