@@ -21,27 +21,30 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            width: 100vw;
-            min-height: 80vh;
+            width: 100%;
+            min-height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
             box-sizing: border-box;
             text-align: center;
             position: relative;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
         }
         .logo-large {
             display: block;
-            width: 100vw;
-            max-width: 1200px;
-            max-height: calc(100vh - 7rem);
+            max-width: 90vw;
+            max-height: 60vh;
+            width: auto;
             height: auto;
             margin: 0 auto 2rem auto;
             box-sizing: border-box;
+            object-fit: contain;
         }
         .logo-small {
             display: none;
             width: auto;
-            max-width: none;
             height: auto;
             margin: 0 auto 2rem auto;
+            object-fit: contain;
         }
         .contact-link {
             font-size: 2.5rem;
@@ -64,8 +67,8 @@
             .logo-small {
                 display: block !important;
                 width: auto !important;
-                max-width: none !important;
                 height: auto !important;
+                object-fit: contain !important;
             }
             .container {
                 min-height: 70vh;
@@ -83,8 +86,8 @@
             }
             .logo-small {
                 width: auto !important;
-                max-width: none !important;
                 height: auto !important;
+                object-fit: contain !important;
             }
         }
     </style>
@@ -95,55 +98,6 @@
         <img src="Belter logo.png" alt="Belter Logo" class="logo-small">
         <a href="mailto:steve@belterautomation.com" class="contact-link">Contact Us</a>
     </div>
-    <script>
-    function scaleLogo() {
-        const logoLarge = document.querySelector('.logo-large');
-        const contactLink = document.querySelector('.contact-link');
-        if (!logoLarge || !contactLink) return;
-
-        // Only run on desktop (large logo visible)
-        if (window.innerWidth <= 900) {
-            logoLarge.style.maxHeight = '';
-            logoLarge.style.width = '';
-            logoLarge.style.height = '';
-            return;
-        }
-
-        // Get the natural aspect ratio of the image
-        let naturalWidth = logoLarge.naturalWidth;
-        let naturalHeight = logoLarge.naturalHeight;
-        if (!naturalWidth || !naturalHeight) {
-            // If not loaded yet, wait for image to load
-            logoLarge.onload = scaleLogo;
-            return;
-        }
-        const aspectRatio = naturalWidth / naturalHeight;
-
-        // Get viewport height and Contact Us position
-        const contactRect = contactLink.getBoundingClientRect();
-        const availableHeight = contactRect.top - 48; // 48px for margin
-        const availableWidth = window.innerWidth;
-
-        // Use 90% of available space, but not less than 300px and not more than 900px
-        const maxHeight = Math.max(300, Math.min(availableHeight * 0.9, 900));
-        const maxWidth = Math.max(300, Math.min(availableWidth * 0.95, 1200));
-
-        // Calculate the largest size that fits both constraints and preserves aspect ratio
-        let finalWidth = maxWidth;
-        let finalHeight = finalWidth / aspectRatio;
-        if (finalHeight > maxHeight) {
-            finalHeight = maxHeight;
-            finalWidth = finalHeight * aspectRatio;
-        }
-
-        logoLarge.style.width = finalWidth + 'px';
-        logoLarge.style.height = finalHeight + 'px';
-        logoLarge.style.maxWidth = finalWidth + 'px';
-        logoLarge.style.maxHeight = finalHeight + 'px';
-    }
-
-    window.addEventListener('resize', scaleLogo);
-    window.addEventListener('DOMContentLoaded', scaleLogo);
     </script>
     </div>
 </body>
