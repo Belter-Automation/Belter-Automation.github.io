@@ -104,15 +104,37 @@
             return;
         }
 
+        // Get the natural aspect ratio of the image
+        let naturalWidth = logoLarge.naturalWidth;
+        let naturalHeight = logoLarge.naturalHeight;
+        if (!naturalWidth || !naturalHeight) {
+            // If not loaded yet, wait for image to load
+            logoLarge.onload = scaleLogo;
+            return;
+        }
+        const aspectRatio = naturalWidth / naturalHeight;
+
         // Get viewport height and Contact Us position
         const contactRect = contactLink.getBoundingClientRect();
         const availableHeight = contactRect.top - 48; // 48px for margin
+        const availableWidth = window.innerWidth;
 
         // Use 90% of available space, but not less than 300px and not more than 900px
-        const logoHeight = Math.max(300, Math.min(availableHeight * 0.9, 900));
-        logoLarge.style.maxHeight = logoHeight + 'px';
-        logoLarge.style.width = '100%';
-        logoLarge.style.height = 'auto';
+        const maxHeight = Math.max(300, Math.min(availableHeight * 0.9, 900));
+        const maxWidth = Math.max(300, Math.min(availableWidth * 0.95, 1200));
+
+        // Calculate the largest size that fits both constraints and preserves aspect ratio
+        let finalWidth = maxWidth;
+        let finalHeight = finalWidth / aspectRatio;
+        if (finalHeight > maxHeight) {
+            finalHeight = maxHeight;
+            finalWidth = finalHeight * aspectRatio;
+        }
+
+        logoLarge.style.width = finalWidth + 'px';
+        logoLarge.style.height = finalHeight + 'px';
+        logoLarge.style.maxWidth = finalWidth + 'px';
+        logoLarge.style.maxHeight = finalHeight + 'px';
     }
 
     window.addEventListener('resize', scaleLogo);
